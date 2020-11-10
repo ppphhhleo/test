@@ -1,5 +1,5 @@
 # coding=utf-8
-
+import math
 class PMI:
     def __init__(self, document):
         self.document = document
@@ -77,7 +77,9 @@ class PMI:
         :param wordpercent2:
         :return:nmi
         """
-        return (joinpercent)/(wordpercent1*wordpercent2)
+        per =  (joinpercent) / (wordpercent1 * wordpercent2)
+        log_per = math.log(per, 2)
+        return log_per
 
     def get_pmi(self):
         """
@@ -85,13 +87,14 @@ class PMI:
         :return:pmi列表
         """
     #    pp = open('/home/mac/Downloads/posneg.txt').read()
-        pp = ('好吃', '便宜', '喜欢', '送得慢', '难吃', '糟糕', '很快', '太贵', '肉多')
+        positive = ('好吃', '便宜', '喜欢', '很快', '肉多')
+        negative = ('送得慢', '难吃', '糟糕', '太贵', '差劲','差评')
         dict_pmi = {}
         dict_frq_word = self.get_dict_frq_word()
         print (dict_frq_word)
         for word1 in dict_frq_word:
             wordpercent1 = dict_frq_word[word1]
-            for word2 in pp: 
+            for word2 in positive: 
                 # dict_frq_word:
                 if word1 == word2:
                     continue
@@ -101,6 +104,20 @@ class PMI:
                 list_together.append(word2)
                 together_probability = self.calcularprobability(self.document, list_together)
                 if together_probability > self.minitogether:
-                    string = word1 + ',' + word2
+                    string = word1 + ' , ' + word2 + ', positive, PMI:'
+                    dict_pmi[string] = self.calculate_nmi(together_probability, wordpercent1, wordpercent2)
+        
+        for word1 in dict_frq_word :
+            wordpercent1 = dict_frq_word[word1]
+            for word2 in negative:
+                if word1 == word2:
+                    continue
+                wordpercent2 = dict_frq_word[word2]
+                list_together = []
+                list_together.append(word1)
+                list_together.append(word2)
+                together_probability = self.calcularprobability(self.document, list_together)
+                if together_probability > self.minitogether:
+                    string = word1 + ' , ' + word2 + ', negative, PMI:'
                     dict_pmi[string] = self.calculate_nmi(together_probability, wordpercent1, wordpercent2)
         return dict_pmi

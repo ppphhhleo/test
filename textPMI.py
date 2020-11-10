@@ -2,6 +2,7 @@
 __author__ = 'root'
 from PMI import *
 import os
+import math
 from extract import extract
 
 if __name__ == '__main__':
@@ -18,6 +19,8 @@ if __name__ == '__main__':
             documents.append(set(extractwords))
     pm = PMI(documents)
     pmi = pm.get_pmi()
+    print('get PMI already, start sorting...', '\n')
+    sorted(pmi.calculate.nmi)
     for p in pmi:
-        if pmi[p] > 5:
+        if pmi[p] > 4:
             print (p, pmi[p], '\n')
