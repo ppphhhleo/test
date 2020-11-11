@@ -3,7 +3,7 @@ import jieba
 import jieba.analyse
 import jieba.posseg as pseg
 import re
-
+jieba.load_userdict('/home/mac/Downloads/use_dic.txt')
 class Extractkeys:
  
     def removeEmoji(self, sentence):

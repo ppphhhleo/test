@@ -96,6 +96,7 @@ class PMI:
         dict_frq_word = self.get_dict_frq_word()
         i = 1
       #  print (dict_frq_word)
+        print('[STPE3] CALCULATE PMI OF EVERY WORD')
         for word1 in dict_frq_word:
             positive_pmi = 0
             negative_pmi = 0
@@ -127,7 +128,7 @@ class PMI:
               #  if together_probability_pos > self.minitogether and together_probability_neg > self.minitogether:
             string = word1 + ' , '+ ' PMI:'
             dict_pmi[string] = self.calculate_sopmi(positive_pmi, negative_pmi)
-            print('store the SOPMI: done', i)
+            print('store the SO-PMI: done! WORD', i)
             i = i + 1
             if i > 100:
                 break
