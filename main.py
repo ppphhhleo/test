@@ -34,9 +34,9 @@ if __name__ == '__main__':
     pmi_start = time.perf_counter()
     pm = PMI(documents)
     pmi_end = time.perf_counter()
- #   print ('[STEP3] CALCULATE PMI DONE! TIME COST ', pmi_end - pmi_start) 
     pmi = pm.get_pmi()
     print ('[STEP3] CALCULATE SO-PMI DONE! TIME COST ', pmi_end - pmi_start)
+
     print('[STEP4] SORT get PMI already, start sorting...')
     sort_pmi = dict(sorted(pmi.items(), key = lambda x:x[1]))
     
@@ -57,28 +57,4 @@ if __name__ == '__main__':
         writer = csv.DictWriter(f, fieldnames = header)
         writer.writeheader()
         writer.writerows(sort_pmi)
-    '''
-    csvfile = file('/home/mac/Downloads/SORT.csv')
-    writer = csv.writer(csvfile)
-    writer.writerow(['word', 'SO-PMI'])
-    list1 = []
-    for i in sort_pmi.values() :
-        s = turple (list(i.values()))
-    list1.append(s)
-    writer.writerows(list1)
-    '''
-    '''
-    he = []
-    for headers in sort_pmi.keys():
-        he.append(headers)
-    headers = he
-
-    with open('/home/mac/Downloads/SORT.csv', 'a', newline = '', encoding = 'utf - 8') as f:
-        writer = csv.DictWriter(f, fieldnames = headers)
-        writer.writeheader()
-        writer.writerows(sort_pmi)
-    print('Writing in file done!')
-    '''
-
-
     
