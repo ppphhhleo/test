@@ -9,7 +9,7 @@ import csv
 
 if __name__ == '__main__':
     documents = []
-    testfile = '/home/mac/Downloads/comments_IR.csv'
+    testfile = 'comments_IR.csv'
     f = open(testfile, 'r')
     
     print ('[STEP1] READ COMMENTS FILE')
