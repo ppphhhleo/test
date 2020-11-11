@@ -30,14 +30,13 @@ if __name__ == '__main__':
     extract_end = time.perf_counter()
     print ('[STEP2] EXTRACT WORDS DONE! TIME COST ', extract_end - extract_start)
     
-    print ('[STEP3] CALCULATE PMI')
+    print ('[STEP3] CALCULATE SO-PMI')
     pmi_start = time.perf_counter()
     pm = PMI(documents)
     pmi_end = time.perf_counter()
-    print ('[STEP3] CALCULATE PMI DONE! TIME COST ', pmi_end - pmi_start)
-    
+ #   print ('[STEP3] CALCULATE PMI DONE! TIME COST ', pmi_end - pmi_start) 
     pmi = pm.get_pmi()
-    
+    print ('[STEP3] CALCULATE SO-PMI DONE! TIME COST ', pmi_end - pmi_start)
     print('[STEP4] SORT get PMI already, start sorting...')
     sort_pmi = dict(sorted(pmi.items(), key = lambda x:x[1]))
     

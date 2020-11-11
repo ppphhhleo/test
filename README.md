@@ -1,1 +1,3 @@
-# PMI
+# Information retrieve
+#takeout 
+#SO-PMI
