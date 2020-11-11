@@ -128,7 +128,7 @@ class PMI:
             dict_pmi[string] = self.calculate_sopmi(positive_pmi, negative_pmi)
             print('store the SO-PMI: done! WORD', i)
             i = i + 1
-            if i > 100:
-                break
+           # if i > 100:
+           #     break
         print('all new words done, return the main')
-        return dict_pmi
+        return dict_pm

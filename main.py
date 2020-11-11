@@ -51,10 +51,10 @@ if __name__ == '__main__':
             print (p, sort_pmi[p], ' middle ', '\n')
 
     print('...Writing in file...')
-
+    '''
     header = ['word', 'SO-PMI']
     with open('/home/mac/Downloads/SORT.csv', 'a', newline = '', encoding = 'utf-8') as f:
         writer = csv.DictWriter(f, fieldnames = header)
         writer.writeheader()
         writer.writerows(sort_pmi)
-    
+    '''
